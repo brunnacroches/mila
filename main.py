@@ -16,13 +16,12 @@
 
 
 #!/usr/bin/env python3
-
+import vosk 
 import pyaudio
 import argparse
 import os
 import queue
 import sounddevice as sd
-import vosk
 import sys
 
 q = queue.Queue()
