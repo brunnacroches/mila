@@ -113,7 +113,7 @@ try:
                     #possamos acessar os seus membros
                     print(result) # result é um destinário
 
-                    if result is not None:
+                    if result is not None: # função para Mila falar
                         text = result['text']
 
                         print(text)
