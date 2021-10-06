@@ -23,7 +23,20 @@ import os
 import queue
 import sounddevice as sd
 import sys
+import pyttsx3
+import json
 
+# Síntese de fala
+engine = pyttsx3.init()
+
+voices = engine.getProperty('voices')
+engine.setProperty('voice', voices[22].id)
+
+def speak(text): 
+    engine.say(text) #motor
+    engine.runAndWait()
+
+# Reconhecimento de Voz
 q = queue.Queue()
 
 def int_or_str(text):
@@ -92,12 +105,19 @@ try:
             rec = vosk.KaldiRecognizer(model, args.samplerate)
             while True:
                 data = q.get()
-                if rec.AcceptWaveform(data):
-                    print(rec.Result())
-                else:
-                    print(rec.PartialResult())
                 if dump_fn is not None:
                     dump_fn.write(data)
+                if rec.AcceptWaveform(data):
+                    result = rec.Result()
+                    result = json.loads(result) # converter para json para que
+                    #possamos acessar os seus membros
+                    print(result) # result é um destinário
+
+                    if result is not None:
+                        text = result['text']
+
+                        print(text)
+                        speak(text)
 
 except KeyboardInterrupt:
     print('\nDone')
