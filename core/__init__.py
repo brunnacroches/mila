@@ -1,4 +1,9 @@
 
+<<<<<<< Updated upstream
+=======
+   
+
+>>>>>>> Stashed changes
 
 # python get time and minute on GOOGLE
 # https://stackoverflow.com/questions/30071886/how-to-get-current-time-in-python-and-break-up-into-year-month-day-hour-minu
