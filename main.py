@@ -120,11 +120,6 @@ try:
                 if result is not None: # função para Mila falar
                     text = result['text']
                     print(text)
-<<<<<<< Updated upstream
-                    # speak(text)
-=======
-                    speak(text)
->>>>>>> Stashed changes
 
                     # Responder que horas são
                     if text == 'que horas são' or text == 'me diga as horas':
