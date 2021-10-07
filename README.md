@@ -22,5 +22,25 @@ Speech Regonition for Portuguese :
 
 
 
-Técnologias: Reconhecimento de voz: (Google para reconhecimento online, Vosk para reconhecimento offline) Síntese de voz: (pyttsx3) Algum de tipo IA: Commands, NLU (classificação de texto)
+Técnologias: Reconhecimento de voz: (Google para reconhecimento online, Vosk para reconhecimento offline) Síntese de voz: (pyttsx3) 
 
+
+Algum de tipo IA: Commands, NLU (classificação de texto)
+
+
+
+Tecnologia : 
+  Reconhecimento de voz: (google para reconhecimento online, vosk para reconhecimento offiline)
+  Síntese de voz: (pyttsx3)
+  https://pypi.org/project/pyttsx3/
+
+  Algum de tipo IA: 
+
+
+Biblioteca para fazer leitura de texto
+
+EXTRAI INFO IMPORTANTES DE UM TEXTO
+https://github.com/snipsco/snips-nlu
+
+COMPREESAO DE LINGUAGEM NATURAL
+www.bold360.com/pt/features/conversational-ai/natural-language-understanding 
