@@ -1,9 +1,16 @@
-import yml
+import yaml
 
-data = yml.safe_load(open('nlu\\train.yml', 'r', encoding='utf-8').read())
+data = yaml.safe_load(open('nlu/train.yml', 'r', encoding='utf-8').read())
+
+
+for command in data['commands']:
+  print(command)
+
 
 # deve passar o diretório dela
 
-print(data)
 
-#  python3.8 nlu\test_data.py
+# TESTE > terminal
+# python3.8 nlu/test_data.py
+
+# print(data)
