@@ -25,6 +25,7 @@ import sounddevice as sd
 import sys
 import pyttsx3
 import json
+from core import SystemInfo
 
 # Síntese de fala
 engine = pyttsx3.init()
@@ -35,6 +36,8 @@ engine.setProperty('voice', voices[22].id)
 def speak(text): 
     engine.say(text) #motor
     engine.runAndWait()
+
+# Reconhecimento de fala
 
 # Reconhecimento de Voz
 q = queue.Queue()
@@ -96,28 +99,32 @@ try:
     else:
         dump_fn = None
 
-    with sd.RawInputStream(samplerate=args.samplerate, blocksize = 8000, device=args.device, dtype='int16',
-                            channels=1, callback=callback):
-            print('#' * 80)
-            print('Press Ctrl+C to stop the recording')
-            print('#' * 80)
+    with sd.RawInputStream(samplerate=args.samplerate, blocksize = 8000, device=args.device, dtype='int16',channels=1, callback=callback):
+        print('#' * 80)
+        print('Press Ctrl+C to stop the recording')
+        print('#' * 80)
 
-            rec = vosk.KaldiRecognizer(model, args.samplerate)
-            while True:
-                data = q.get()
-                if dump_fn is not None:
-                    dump_fn.write(data)
-                if rec.AcceptWaveform(data):
-                    result = rec.Result()
-                    result = json.loads(result) # converter para json para que
-                    #possamos acessar os seus membros
-                    print(result) # result é um destinário
+        rec = vosk.KaldiRecognizer(model, args.samplerate)
+        # Loop do reconhecimento de fala
+        while True:
+            data = q.get()
+            if dump_fn is not None:
+                dump_fn.write(data)
+            if rec.AcceptWaveform(data):
+                result = rec.Result()
+                result = json.loads(result) 
+                # converter para json para que
+                #possamos acessar os seus membros
+                # print(result) # result é um destinário
 
-                    if result is not None: # função para Mila falar
-                        text = result['text']
+                if result is not None: # função para Mila falar
+                    text = result['text']
+                    print(text)
+                    # speak(text)
 
-                        print(text)
-                        speak(text)
+                    # Responder que horas são
+                    if text == 'que horas são' or text == 'me diga as horas':
+                        speak(SystemInfo.get_time())
 
 except KeyboardInterrupt:
     print('\nDone')

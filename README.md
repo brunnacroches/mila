@@ -29,12 +29,15 @@ Técnologias: Reconhecimento de voz: (Google para reconhecimento online, Vosk pa
 Tecnologia : 
   Reconhecimento de voz: (google para reconhecimento online, vosk para reconhecimento offiline)
   Síntese de voz: (pyttsx3)
-  Algum de tipo IA: 
   https://pypi.org/project/pyttsx3/
 
+  Algum de tipo IA: 
 
 
 Biblioteca para fazer leitura de texto
 
 EXTRAI INFO IMPORTANTES DE UM TEXTO
 https://github.com/snipsco/snips-nlu
+
+COMPREESAO DE LINGUAGEM NATURAL
+www.bold360.com/pt/features/conversational-ai/natural-language-understanding 
