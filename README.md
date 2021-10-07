@@ -34,7 +34,7 @@ Tecnologia :
   Síntese de voz: (pyttsx3)
   https://pypi.org/project/pyttsx3/
 
-  Algum de tipo IA: 
+  Algum de tipo IA: Commands, NLU (classificação de texto )
 
 
 Biblioteca para fazer leitura de texto
