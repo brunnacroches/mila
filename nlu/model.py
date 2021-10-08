@@ -1,5 +1,9 @@
 import yaml
 import numpy as np
+import tensorflow as tf  # ===> ADD A LINGUAGEM DE APRENDIZADO TENSORFLOW (MARCHING LEARNING)
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import LSTM, Dense
+from tensorflow.keras.utils import to_categorical # essa função vai transformar as nossas labels em índice 
 
 data = yaml.safe_load(open('nlu/train.yml', 'r', encoding='utf-8').read())
 
@@ -39,12 +43,13 @@ print('Maior seq:', max_seq)
 # Criar o DataSet one-hot (dados de textos para números usando deep learning) (número de exemplos, tamanho da sequencia, número de caracteres)
 # Criar dataset sparso (disperso => (número de exemplos, tamanho da sequencia, número de caracteres))
 input_data = np.zeros((len(inputs), max_seq, len(chars)), dtype='int32')
+output_data = to_categorical(outputs, len(outputs)) # ===> ADD A LINGUAGEM DE APRENDIZADO TENSORFLOW (MARCHING LEARNING)
 
 for i, input in enumerate(inputs):
   for k, ch in enumerate(input):
     input_data[i, k, chr2idx[ch]] = 1.0
 
-print(input_data[4])
+print(output_data[0])
 
 
 # print(inputs)
@@ -67,3 +72,6 @@ print(input_data[4])
 # PARA FAZER CLASSIFICAÇÃO DE SENTIMENTOS
 # https://keras.io/examples/nlp/text_classification_from_scratch/
 
+# FAZENDO UMA CLASSIFIÇÃO DE ENTIDADE
+# dar um texto, um DataSete e vamos prever qual entidade o texto pertence
+# método para calcular a confinça 
