@@ -43,7 +43,25 @@ print('Maior seq:', max_seq)
 # Criar o DataSet one-hot (dados de textos para números usando deep learning) (número de exemplos, tamanho da sequencia, número de caracteres)
 # Criar dataset sparso (disperso => (número de exemplos, tamanho da sequencia, número de caracteres))
 input_data = np.zeros((len(inputs), max_seq, len(chars)), dtype='int32')
-output_data = to_categorical(outputs, len(outputs)) # ===> ADD A LINGUAGEM DE APRENDIZADO TENSORFLOW (MARCHING LEARNING)
+
+# Criar lables para o classificador
+# python3.8 get unique elements in list
+labels = set(outputs)
+
+label2idx = {}
+indx2label = {}
+
+for k, label in enumerate(labels):
+  label2idx[label] = k
+  indx2label[k] = label 
+
+output_data = []
+
+for output in outputs:
+  output_data.append(label2idx[output]) # <--- "label" or "labels?"
+
+output_data = to_categorical(output_data, len(output_data))
+# ===> ADD A LINGUAGEM DE APRENDIZADO TENSORFLOW (MARCHING LEARNING)
 
 for i, input in enumerate(inputs):
   for k, ch in enumerate(input):
