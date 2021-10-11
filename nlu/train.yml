@@ -1,38 +1,38 @@
 # vai conter o que os comandos que vai estar no assistente 
 commands:
   # Hora
-  - commmand:
+  - command:
     input:  Que horas são?
     entity: time
     action: getTime
-  - commmand:
+  - command:
     input:  Me digas horas.
     entity: time
     action: getTime
-  - commmand:
+  - command:
     input:  Eu quero saber as horas.
     entity: time
     action: getTime
   # Data
-  - commmand:
+  - command:
     input:  Qual é a data de hoje?
     entity: time
     action: getDate
-  - commmand:
+  - command:
     input:  Data de hoje.
     entity: time
     action: getDate
   # Tempo
-  - commmand:
+  - command:
     input:  Previsão do tempo
     entity: weather
     action: getWeather
-  - commmand:
+  - command:
     input:  Como está o clima?
     entity: weather
     action: getWeather
   # Open
-  - commmand:
+  - command:
     input:  Abrir google
     entity: open
     action: google
