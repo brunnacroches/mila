@@ -5,7 +5,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import LSTM, Dense, Embedding
 from tensorflow.keras.utils import to_categorical
 
-data = yaml.safe_load(open('nlu\\train.yml', 'r', encoding='utf-8').read())
+data = yaml.safe_load(open('nlu/train.yml', 'r', encoding='utf-8').read())
 
 inputs, outputs = [], []
 
@@ -88,3 +88,8 @@ def classify(text):
     out = model.predict(x)
     idx = out.argmax()
     print(idx2label[idx])
+
+
+    # python3.8 nlu/model.py
+
+    # data = yaml.safe_load(open('nlu/train.yml', 'r', encoding='utf-8').read())

@@ -34,3 +34,5 @@ while True:
     text = input('Digite algo: ')
     print(classify(text))
 '''
+
+# python3.8 nlu/classifier.py

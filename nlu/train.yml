@@ -10,6 +10,10 @@ commands:
     input: Me diga as horas.
     entity: time
     action: getTime
+  - command:
+    input:  Eu quero saber as horas.
+    entity: time
+    action: getTime
   # Data
   - command: 
     input: Qual é a data de hoje?
@@ -37,3 +41,7 @@ commands:
     input: Abra youtube
     entity: open
     action:  
+
+# python3.8 nlu/train.yml
+
+# python3.8 nlu/model.py
