@@ -26,6 +26,7 @@ import sys
 import pyttsx3
 import json
 from core import SystemInfo
+from nlu.classifier import classify
 
 # Síntese de fala
 engine = pyttsx3.init()
@@ -119,14 +120,21 @@ try:
 
                 if result is not None: # função para Mila falar
                     text = result['text']
-                    print(text)
+                    
+                    # Reconhecer Entidade do texto.
+                    entity = classify(text)
 
-                    # Responder que horas são
-                    if text == 'que horas são' or text == 'me diga as horas':
-                        speak(SystemInfo.get_time())
+
+                    if entity == 'time\getTime':
+                        speak(core.SystemInfo.get_time())
+                    
+                    print('Text: {}  Entity: {}'.format(text, entity))
 
 except KeyboardInterrupt:
     print('\nDone')
     parser.exit(0)
 except Exception as e:
     parser.exit(type(e).__name__ + ': ' + str(e))
+
+
+# python3.8 main.py
