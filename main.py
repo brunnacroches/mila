@@ -38,6 +38,21 @@ def speak(text):
     engine.say(text) #motor
     engine.runAndWait()
 
+# Método Evaluate : ele vai verificar o método Evaluate
+def evaluate(text): 
+# Reconhecer Entidade do texto.
+    entity = classify(text)              
+    if entity == 'time/getTime':
+        speak(core.SystemIget_time())
+    elif entity == 'time/getDate':
+        speak(core.SystemIget_date())
+
+    # Abrir programas
+    elif entity == 'open/notepad':
+        speak('Abrindo o bloco de notas')
+        os.system('notepad.exe')
+
+    print('Text: {}  Entity: {}'.format(text, entity))
 # Reconhecimento de fala
 
 # Reconhecimento de Voz
@@ -120,17 +135,7 @@ try:
 
                 if result is not None: # função para Mila falar
                     text = result['text']
-                    
-                    # Reconhecer Entidade do texto.
-                    entity = classify(text)
-
-
-                    if entity == 'time/getTime':
-                        speak(core.SystemInfo.get_time())
-                    elif entity == 'time/getDate':
-                        speak(core.SystemInfo.get_date())
-
-                    print('Text: {}  Entity: {}'.format(text, entity))
+                    evaluate(text)
 
 except KeyboardInterrupt:
     print('\nDone')
