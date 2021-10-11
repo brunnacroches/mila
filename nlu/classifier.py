@@ -1,6 +1,4 @@
 # Ele vai carregar  o modelo treinado e fazer inferencia 
-
-
 from tensorflow.keras.models import load_model
 import numpy as np
 

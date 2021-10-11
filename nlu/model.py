@@ -34,6 +34,7 @@ for i, inp in enumerate(inputs):
 # Input data sparse
 '''
 input_data = np.zeros((len(inputs), max_seq), dtype='int32')
+
 for i, input in enumerate(inputs):
     for k, ch in enumerate(input):
         input_data[i, k] = chr2idx[ch]
@@ -88,8 +89,3 @@ def classify(text):
     out = model.predict(x)
     idx = out.argmax()
     print(idx2label[idx])
-
-
-    # python3.8 nlu/model.py
-
-    # data = yaml.safe_load(open('nlu/train.yml', 'r', encoding='utf-8').read())

@@ -16,16 +16,16 @@
 
 
 #!/usr/bin/env python3
-import vosk 
-import pyaudio
-import argparse
+import vosk
 import os
+import pyaudio
+import pyttsx3
+import json
+import core
+import argparse
 import queue
 import sounddevice as sd
 import sys
-import pyttsx3
-import json
-from core import SystemInfo
 from nlu.classifier import classify
 
 # Síntese de fala
@@ -127,7 +127,9 @@ try:
 
                     if entity == 'time/getTime':
                         speak(core.SystemInfo.get_time())
-                    
+                    elif entity == 'time/getDate':
+                        speak(core.SystemInfo.get_date())
+
                     print('Text: {}  Entity: {}'.format(text, entity))
 
 except KeyboardInterrupt:
