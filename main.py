@@ -16,6 +16,7 @@
 
 
 #!/usr/bin/env python3
+# from vosk import Model, KaldiRecognizer
 import vosk
 import os
 import pyaudio
@@ -38,22 +39,20 @@ def speak(text):
     engine.say(text) #motor
     engine.runAndWait()
 
-# Método Evaluate : ele vai verificar o método Evaluate
-def evaluate(text): 
-# Reconhecer Entidade do texto.
-    entity = classify(text)              
+def evaluate(text):
+  # Reconhecer entidade do texto.ArithmeticError()
+    entity = classify(text)
     if entity == 'time/getTime':
-        speak(core.SystemIget_time())
+        speak(core.SystemInfo.get_time())
     elif entity == 'time/getDate':
-        speak(core.SystemIget_date())
+        speak(core.SystemInfo.get_date())
 
-    # Abrir programas
+    # Abrir Programas
     elif entity == 'open/notepad':
         speak('Abrindo o bloco de notas')
         os.system('notepad.exe')
 
-    print('Text: {}  Entity: {}'.format(text, entity))
-# Reconhecimento de fala
+    print('Text: {} Entity: {}'.format(text, entity))
 
 # Reconhecimento de Voz
 q = queue.Queue()
@@ -100,7 +99,7 @@ try:
     if args.model is None:
         args.model = "model"
     if not os.path.exists(args.model):
-        print ("Please download a model for your language from https://alphacephei.com/vosk/models")
+        print ("Please download a model for your language from https:/alphacephei.com/vosk/models")
         print ("and unpack as 'model' in the current folder.")
         parser.exit(0)
     if args.samplerate is None:
@@ -120,22 +119,29 @@ try:
         print('Press Ctrl+C to stop the recording')
         print('#' * 80)
 
-        rec = vosk.KaldiRecognizer(model, args.samplerate)
+    rec = vosk.KaldiRecognizer(model, args.samplerate)
         # Loop do reconhecimento de fala
-        while True:
-            data = q.get()
-            if dump_fn is not None:
-                dump_fn.write(data)
-            if rec.AcceptWaveform(data):
-                result = rec.Result()
-                result = json.loads(result) 
-                # converter para json para que
-                #possamos acessar os seus membros
-                # print(result) # result é um destinário
+    while True:
+        data = q.get()
+    if dump_fn is not None:
+        dump_fn.write(data)
 
-                if result is not None: # função para Mila falar
-                    text = result['text']
-                    evaluate(text)
+    if rec.AcceptWaveform(data):
+        result = rec.Result()
+        result = json.loads(result) 
+
+        if result is not None: # função para Mila falar
+            text = result['text']
+            evaluate(text)
+
+# converter para json para que
+#possamos acessar os seus membros
+# print(result) # result é um destinário
+
+                    
+# Método Evaluate : ele vai verificar o método Evaluate
+# Reconhecimento de fala
+
 
 except KeyboardInterrupt:
     print('\nDone')
