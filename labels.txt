@@ -1,4 +1,4 @@
-time/getTime
-time/getDate
-weather/getWeather
-open/notepad
+weather|getWeather
+time|getDate
+time|getTime
+open|notepad
