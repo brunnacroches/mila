@@ -85,3 +85,5 @@ def classify(text):
 while True:
     text = input('Digite algo: ')
     classify(text)
+
+    # python3.8 nlu/model.py
