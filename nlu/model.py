@@ -76,7 +76,7 @@ for output in outputs:
 
 output_data = to_categorical(output_data, len(output_data))
 
-
+ 
 print(output_data[0])
 
 model = Sequential()
