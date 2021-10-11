@@ -125,7 +125,7 @@ try:
                     entity = classify(text)
 
 
-                    if entity == 'time\getTime':
+                    if entity == 'time/getTime':
                         speak(core.SystemInfo.get_time())
                     
                     print('Text: {}  Entity: {}'.format(text, entity))
