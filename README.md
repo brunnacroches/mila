@@ -43,4 +43,9 @@ EXTRAI INFO IMPORTANTES DE UM TEXTO
 https://github.com/snipsco/snips-nlu
 
 COMPREESAO DE LINGUAGEM NATURAL
-www.bold360.com/pt/features/conversational-ai/natural-language-understanding 
+www.bold360.com/pt/features/conversational-ai/natural-language-understanding
+
+
+0.9
+FUNÇÕES DO ASSISTENTE :
+Abrir programas

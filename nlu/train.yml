@@ -33,9 +33,13 @@ commands:
     action: getWeather
   # Open
   - command:
-    input:  Abrir google
+    input:  Abrir bloco de notas
     entity: open
-    action: google
+    action: notepad
+  - command:
+    input:  Abrir bloco de notas
+    entity: open
+    action: notepad
     
 # python3.8 nlu/train.yml
 
